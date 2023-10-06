@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search history</title>
+    <style>
+        /* Style for the list item */
+        li {
+            list-style-type: none;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        /* Style for the first text field (40%) */
+        .field1 {
+            flex: 40%;
+            padding: 5px;
+        }
+
+        /* Style for the second text field (30%) */
+        .field2 {
+            flex: 30%;
+            padding: 5px;
+        }
+
+        /* Style for the third text field (30%) */
+        .field3 {
+            flex: 30%;
+            padding: 5px;
+         }
+    </style>
+</head>
+<body>
+<a th:href="@{/}">
+    <div class="back-icon">
+        <!-- Replace with your back arrow icon (e.g., an SVG or an image) -->
+        <img th:src="@{images/backarrow.png}" alt="Back" width="30px" height="30px">
+    </div>
+</a>
+<h1 style="font-family: 'system-ui';text-align: center">Search History</h1>
+
+<!-- Iterate through the list and display each city -->
+<ul>
+    <li th:if="${not #lists.isEmpty(weatherList)}" th:each="weatherItem : ${weatherList}">
+        <div th:text="${weatherItem.name}" class="field1"></div>
+        <div th:text="${weatherItem.value}" class="field2"></div>
+        <div th:text="${weatherItem.time}" class="field3"></div>
+    </li>
+    <li th:unless="${not #lists.isEmpty(weatherList)}">
+        <!-- Content to display if the list is empty -->
+        <div style="text-align: center;">No weather data available.</div>
+    </li>
+</ul>
+</body>
+</html>

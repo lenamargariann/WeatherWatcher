@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Information</title>
+    <!-- Add any necessary CSS for styling, or you can use classes for styling. -->
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .center-div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .back-icon {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .weather-measure {
+            font-size: 50px;
+            font-family: "DejaVu Sans",system-ui;
+
+            /* Add more styles as needed */
+        }
+    </style>
+</head>
+<body>
+<!-- Back arrow icon in the upper-left corner -->
+<a th:href="@{/}">
+    <div class="back-icon">
+        <!-- Replace with your back arrow icon (e.g., an SVG or an image) -->
+        <img th:src="@{images/backarrow.png}" alt="Back" width="30px" height="30px">
+    </div>
+</a>
+
+
+<!-- Centered content for weather -->
+<div class="center-div">
+    <!-- Weather icon -->
+    <!-- Replace with your weather icon (e.g., an SVG or an image) -->
+    <img th:src="@{images/weather-icon.png}" alt="Weather" width="100" height="100">
+
+    <!-- Location text -->
+    <p th:text="${location}"></p>
+
+    <!-- Weather description text -->
+    <p th:text="${weather_description}"></p>
+
+    <p th:text="${measure_value}" style=".weather-measure"></p>
+</div>
+</body>
+</html>
